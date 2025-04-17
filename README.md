@@ -4,17 +4,12 @@ This project provides tools for analyzing protein secondary structures by comput
 
 ## Repository Overview
 
-bio/
-├── examples/                      # Sample PDB files for testing
-├── advanced_polypeptide_builder.py  # Custom builder for polypeptides with dihedral calculations
-├── polypeptide_with_dihedrals.py   # Extension of Biopython's Polypeptide class to include dihedral angles
-├── residue_analyzer.py            # Analyzes individual residues within a protein structure
-├── utils.py                       # Utility functions (e.g., angle normalization)
-├── main.py                        # Entry point script for executing the analysis
-└── .gitignore                     # Specifies files to ignore in version control
+Key features:
+- Parses PDB files and extracts chains and residues
+- Computes phi/psi angles using backbone atoms
+- Assigns secondary structure classes (alpha, beta, b_anti, b_par, unstructured)
+- Built on top of Bio.PDB with modular, extensible architecture
 
-  
-  
 ## Getting Started
 
 ### Prerequisites

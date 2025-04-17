@@ -42,7 +42,7 @@ To analyze a protein structure:
 
 ```bash
 python main.py -pdb examples/9lil.pdb -chain A
-'''
+```
 This will:
 
 Parse the specified PDB file.

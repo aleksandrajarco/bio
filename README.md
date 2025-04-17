@@ -4,14 +4,15 @@ This project provides tools for analyzing protein secondary structures by comput
 
 ## Repository Overview
 
-bio/ 
-  ├── examples/ # Sample PDB files for testing 
-  ├── advanced_polypeptide_builder.py # Custom builder for polypeptides with dihedral calculations 
-  ├── polypeptide_with_dihedrals.py # Extension of Biopython's Polypeptide class to include dihedral angles 
-  ├── residue_analyzer.py # Analyzes individual residues within a protein structure 		  
-  ├── utils.py # Utility functions (e.g., angle normalization) 
-  ├── main.py # Entry point script for executing the analysis 
-  └── .gitignore # Specifies files to ignore in version control
+bio/
+├── examples/                      # Sample PDB files for testing
+├── advanced_polypeptide_builder.py  # Custom builder for polypeptides with dihedral calculations
+├── polypeptide_with_dihedrals.py   # Extension of Biopython's Polypeptide class to include dihedral angles
+├── residue_analyzer.py            # Analyzes individual residues within a protein structure
+├── utils.py                       # Utility functions (e.g., angle normalization)
+├── main.py                        # Entry point script for executing the analysis
+└── .gitignore                     # Specifies files to ignore in version control
+
   
   
 ## Getting Started
@@ -31,10 +32,16 @@ bio/
    cd bio
    ```
 
-2. Install the required packages:
+2. Create a virtual environment (optional but recommended):
 
    ```bash
-   pip install biopython matplotlib
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```	
+3. Install the required packages:
+
+   ```bash
+   pip install requirements.txt
    ```
    
 ### Usage

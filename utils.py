@@ -1,4 +1,5 @@
 from numpy import pi
+from Bio.PDB import vectors
 
 
 def unify_angle(angle):
@@ -10,9 +11,8 @@ def unify_angle(angle):
     return angle
 
 
-def calculate_dihedral_angle(self, atom1, atom2, atom3, atom4):
-    self.find_res_in_structure()
-    angle = calculate_dihedral_angle(
+def calculate_dihedral_angle(atom1, atom2, atom3, atom4):
+    angle = vectors.calc_dihedral(
         atom1.get_vector(),
         atom2.get_vector(),
         atom3.get_vector(),

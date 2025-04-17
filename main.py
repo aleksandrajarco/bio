@@ -26,7 +26,11 @@ def main():
     ppb = DihedralPPBuilder()
     peptide = ppb.build_peptides(chain_a, aa_only=1)[0]
     ss_map = peptide.assign_secondary_structure()
-    print(ss_map)
+    residue_analyzer = ResidueAnalyzer(238, 'A', structure)
+    residue = residue_analyzer.find_res_in_structure()
+    print(residue)
+
+    #print(ss_map)
 
 if __name__ == '__main__':
     main()

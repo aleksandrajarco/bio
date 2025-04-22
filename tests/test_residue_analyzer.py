@@ -39,7 +39,6 @@ class TestResidueAnalyzer(unittest.TestCase):
         # You can add more residues or atoms similarly
         # Add another residue, for example "GLY" (Glycine)
         self.residue2 = Residue((' ', 2, ' '), 'GLY', ' ')
-        #chain.add(self.residue2)
         atom_n = Atom('N', np.array([1.0, 0.0, 0.0]), 1.0, 1.0, ' ', 'N', 1, 'N', 1.0)
         self.residue2.add(atom_n)
 

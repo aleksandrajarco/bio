@@ -8,6 +8,7 @@ Author: ola
 
 import sys
 
+
 class ResidueAnalyzer:
     def __init__(self, residue_number, chain_name, structure):
         self.residue_number = residue_number
@@ -22,16 +23,17 @@ class ResidueAnalyzer:
 
     def find_res_in_structure(self):
         if not self.if_chain_in_structure():
-            print('Cannot find residue in structure.')
+            print("Cannot find residue in structure.")
             sys.exit()
 
         try:
             self.residue = [
-                r for r in self.structure.get_residues()
+                r
+                for r in self.structure.get_residues()
                 if r.id[1] == int(self.residue_number)
             ][0]
         except IndexError:
-            print('Residue not found.')
+            print("Residue not found.")
             sys.exit()
 
         return self.residue

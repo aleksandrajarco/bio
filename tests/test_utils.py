@@ -31,5 +31,5 @@ class TestUtils(unittest.TestCase):
         mock_calc.assert_called_once()  # optional, to verify interaction
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

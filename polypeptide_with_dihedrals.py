@@ -13,9 +13,9 @@ class PolypeptideWithDihedrals(Polypeptide):
         angles = {}
         for i, res in enumerate(self):
             try:
-                n = res['N'].get_vector()
-                ca = res['CA'].get_vector()
-                c = res['C'].get_vector()
+                n = res["N"].get_vector()
+                ca = res["CA"].get_vector()
+                c = res["C"].get_vector()
             except KeyError:
                 angles[res] = (None, None)
                 res.xtra["PHI"] = res.xtra["PSI"] = None
@@ -25,14 +25,14 @@ class PolypeptideWithDihedrals(Polypeptide):
 
             if i > 0:
                 try:
-                    cp = self[i - 1]['C'].get_vector()
+                    cp = self[i - 1]["C"].get_vector()
                     phi = calc_dihedral(cp, n, ca, c)
                 except KeyError:
                     pass
 
             if i < len(self) - 1:
                 try:
-                    nn = self[i + 1]['N'].get_vector()
+                    nn = self[i + 1]["N"].get_vector()
                     psi = calc_dihedral(n, ca, c, nn)
                 except KeyError:
                     pass
@@ -49,16 +49,16 @@ class PolypeptideWithDihedrals(Polypeptide):
         phi_psi_dict = self.get_phi_psi_list()
 
         for residue, (phi, psi) in phi_psi_dict.items():
-            secondary_structure = 'U'
+            secondary_structure = "U"
             if phi is not None and psi is not None:
                 if -145 < phi < -135 and 130 < psi < 140:
-                    secondary_structure = 'b_anti'
+                    secondary_structure = "b_anti"
                 elif -125 < phi < -115 and 110 < psi < 120:
-                    secondary_structure = 'b_par'
+                    secondary_structure = "b_par"
                 elif -180 < phi < -100 and 100 < psi < 180:
-                    secondary_structure = 'beta'
+                    secondary_structure = "beta"
                 elif -135 < phi < -45 and -50 < psi < 40:
-                    secondary_structure = 'alpha'
+                    secondary_structure = "alpha"
 
             self.secondary_structure_map[residue] = secondary_structure
 

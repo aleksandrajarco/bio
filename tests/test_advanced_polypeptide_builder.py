@@ -5,14 +5,18 @@ from Bio.PDB.Entity import Entity
 from Bio.PDB.PDBExceptions import PDBException
 from Bio.PDB.Structure import Structure
 
-from advanced_polypeptide_builder import DihedralPPBuilder  # Assuming your builder is imported like this
+from advanced_polypeptide_builder import (
+    DihedralPPBuilder,
+)  # Assuming your builder is imported like this
 from polypeptide_with_dihedrals import PolypeptideWithDihedrals
 
 
 class TestDihedralPPBuilder(unittest.TestCase):
     def setUp(self):
 
-        base_dir = Path(__file__).resolve().parent.parent  # go up from tests/ to project root
+        base_dir = (
+            Path(__file__).resolve().parent.parent
+        )  # go up from tests/ to project root
         pdb_path = base_dir / "examples" / "9lil.pdb"
 
         parser = PDBParser(QUIET=True)
@@ -44,5 +48,5 @@ class TestDihedralPPBuilder(unittest.TestCase):
         self.assertIn("Structure contains no models", str(context.exception))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

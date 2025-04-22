@@ -9,7 +9,10 @@ class DihedralPPBuilder(PPBuilder):
         level = entity.get_level()
 
         if level == "S":
-            chains = entity[0].get_list()
+            model = next(entity.get_models(), None)
+            if model is None:
+                raise PDBException("Structure contains no models.")
+            chains = model.get_list()
         elif level == "M":
             chains = entity.get_list()
         elif level == "C":

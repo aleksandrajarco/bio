@@ -3,10 +3,8 @@ from itertools import islice
 from pathlib import Path
 
 from Bio.PDB import PDBParser
-from numpy.ma.testutils import assert_equal
 
 from polypeptide_with_dihedrals import PolypeptideWithDihedrals
-
 
 class TestPolypeptideWithDihedrals(unittest.TestCase):
     def setUp(self):

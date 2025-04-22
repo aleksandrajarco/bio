@@ -1,0 +1,33 @@
+import unittest
+from pathlib import Path
+from Bio.PDB import PDBParser
+
+from advanced_polypeptide_builder import DihedralPPBuilder  # Assuming your builder is imported like this
+from polypeptide_with_dihedrals import PolypeptideWithDihedrals
+
+
+class TestDihedralPPBuilder(unittest.TestCase):
+    def setUp(self):
+
+        base_dir = Path(__file__).resolve().parent.parent  # go up from tests/ to project root
+        pdb_path = base_dir / "examples" / "9lil.pdb"
+
+        parser = PDBParser(QUIET=True)
+        self.structure = parser.get_structure("example", pdb_path)
+
+    def test_build_peptides(self):
+        # Initialize PPBuilder
+        ppb = DihedralPPBuilder()
+
+        # Build polypeptides
+        polypeptides = ppb.build_peptides(self.structure)
+
+        # Assertions
+        self.assertIsInstance(polypeptides, list)
+        self.assertEqual(len(polypeptides), 2)
+
+        self.assertIsInstance(polypeptides[0], PolypeptideWithDihedrals)
+        
+
+if __name__ == '__main__':
+    unittest.main()

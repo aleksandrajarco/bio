@@ -3,6 +3,7 @@ from Bio.PDB.Polypeptide import PPBuilder
 
 from polypeptide_with_dihedrals import PolypeptideWithDihedrals
 
+
 class DihedralPPBuilder(PPBuilder):
     def build_peptides(self, entity, aa_only=1):
         """Build and return a list of PolypeptideWithDihedrals objects."""
@@ -33,8 +34,11 @@ class DihedralPPBuilder(PPBuilder):
 
             pp = None
             for next_res in iterator:
-                if (self._accept(prev_res, aa_only) and self._accept(next_res, aa_only)
-                        and self._is_connected(prev_res, next_res)):
+                if (
+                    self._accept(prev_res, aa_only)
+                    and self._accept(next_res, aa_only)
+                    and self._is_connected(prev_res, next_res)
+                ):
                     if pp is None:
                         pp = PolypeptideWithDihedrals()
                         pp.append(prev_res)

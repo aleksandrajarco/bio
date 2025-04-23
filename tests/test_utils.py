@@ -1,8 +1,10 @@
+import os
+import tempfile
 import unittest
 from unittest.mock import MagicMock, patch
 from numpy import pi
 
-from utils import unify_angle, calculate_dihedral_angle
+from utils import unify_angle, calculate_dihedral_angle, plot_ramachandran
 
 
 class TestUtils(unittest.TestCase):
@@ -30,6 +32,31 @@ class TestUtils(unittest.TestCase):
         self.assertAlmostEqual(result, 90.0)
         mock_calc.assert_called_once()  # optional, to verify interaction
 
+    def test_ramachandran_plot_saves_file(self):
+        # Dummy phi/psi angle data (should be valid floats)
+        dummy_angles = [
+            (-60.0, -45.0),
+            (-120.0, 135.0),
+            (-135.0, 140.0),
+            (-75.0, 160.0)
+        ]
+
+        # Create a temporary file path
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp_file:
+            output_path = tmp_file.name
+
+        try:
+            # Call the function
+            plot_ramachandran(dummy_angles, output_path)
+
+            # Assert file was created
+            self.assertTrue(os.path.exists(output_path))
+            self.assertGreater(os.path.getsize(output_path), 0)  # Not an empty file
+
+        finally:
+            # Cleanup
+            if os.path.exists(output_path):
+                os.remove(output_path)
 
 if __name__ == "__main__":
     unittest.main()

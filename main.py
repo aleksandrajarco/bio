@@ -4,7 +4,6 @@ from Bio.PDB import PDBParser
 
 import utils
 from advanced_polypeptide_builder import DihedralPPBuilder
-from residue_analyzer import ResidueAnalyzer
 from utils import plot_ramachandran
 
 parser = PDBParser()
@@ -73,13 +72,6 @@ def main():
             ss_map.update(peptide.assign_secondary_structure())
         summary = utils.generate_ss_summary(ss_map)
         print(summary)
-
-    # print(peptide.get_phi_psi_list().values())
-    # plot_ramachandran(peptide.get_phi_psi_list().values())
-    # residue_analyzer = ResidueAnalyzer(238, "A", structure)
-    # residue = residue_analyzer.find_res_in_structure()
-
-    # print(residue)
 
 
 if __name__ == "__main__":

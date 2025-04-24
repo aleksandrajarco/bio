@@ -16,7 +16,7 @@ Key features:
 
 - Python 3.8 or higher
 - [Biopython](https://biopython.org/)
-- [matplotlib](https://matplotlib.org/) (optional, for plotting)
+- matplotlib >= 3.4.0
 
 ### Installation
 
@@ -36,39 +36,66 @@ Key features:
 3. Install the required packages:
 
    ```bash
-   pip install requirements.txt
+   pip install -r requirements.txt
    ```
    
 ### Usage
-To analyze a protein structure:
+## Example CLI Commands:
+1. Generate Ramachandran Plot for a Chain
+This command generates a Ramachandran plot for a given PDB file and chain.
 
 ```bash
-python main.py -pdb examples/9lil.pdb -chain A
+python main.py -pdb path/to/your/pdb_file.pdb -chain A -output plot.png
 ```
-This will:
+Arguments:
 
-Parse the specified PDB file.
+-pdb: Path to the PDB file.
 
-Compute the ϕ and ψ angles for each residue.
+-chain: The chain to analyze.
 
-Assign secondary structure elements based on these angles.
+-output: Optional. File name to save the plot to (default is ramachandran_plot.png).
 
-Output the results to the console.
+2. Export Phi/Psi Angles to CSV
+This command exports the Phi/Psi angles of the peptide chain to a CSV file.
+
+```bash
+python main.py -pdb path/to/your/pdb_file.pdb -chain A -export_csv
+```
+Arguments:
+
+-pdb: Path to the PDB file.
+
+-chain: The chain to analyze.
+
+-export_csv: path to CSV file where the phi/psi angles together with residue information will be exported..
+
+3. Display a Summary of Secondary Structures
+This command outputs a summary of secondary structures in the given PDB file and chain.
+
+```bash
+python main.py -pdb path/to/your/pdb_file.pdb -chain A -ss_summary
+```
+Arguments:
+
+-pdb: Path to the PDB file.
+
+-chain: The chain to analyze.
+
+-ss_summary: Flag to display secondary structure summary.
 
 ## Features
 Dihedral Angle Calculation: Computes backbone ϕ and ψ angles for residues.
 
 Secondary Structure Assignment: Classifies residues into secondary structures using angle thresholds.
 
-Visualization: (Planned) Generate plots to visualize secondary structure distribution and Ramachandran plots.
+Visualization: Generate plots to visualize secondary structure distribution and Ramachandran plots.
 
 ## Future Enhancements
-Implement visualization tools for secondary structure distribution.
+Integration with Data Analysis Libraries: Consider integrating the tool with libraries like pandas or scipy for data analysis or better handling of larger datasets.
 
-Develop Ramachandran plot generation.
+More Plotting Options: Besides Ramachandran plots, providing options for other plots such as secondary structure distributions might be a good enhancement.
 
-Expand secondary structure classification criteria.
+Handling Multiple Chains: Add a feature for handling multiple chains in the PDB file for batch processing.
 
-Integrate with molecular visualization tools like PyMOL or NGLView.
-
+3D Plotting of Secondary Structures: This could be a more advanced visualization feature where secondary structure elements (alpha-helices, beta-sheets) are visualized in 3D.
 

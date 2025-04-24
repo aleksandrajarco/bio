@@ -73,5 +73,6 @@ def main():
         summary = utils.generate_ss_summary(ss_map)
         print(summary)
 
+
 if __name__ == "__main__":
     main()
